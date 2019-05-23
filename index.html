@@ -1,418 +1,623 @@
-<!DOCTYPE html>
-<html>
+
+<!doctype html>
+
+<html lang="en">
+
 <head>
-<title>
-Home
-</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Abhishek Mhaiskar | Full-Stack Developer</title>
+    <meta name="description" content="I'm a Full Stack developer.
+                Avid self-learner, proactive, organized and dedicated to everything I do.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- icon -->
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link href="favicon.ico" rel="shortcut icon">
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+        <!-- css -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:400,700">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+            crossorigin="anonymous">
+            <link href="css/style.css" rel="stylesheet" media="screen">
+            <script src="js/bootstrap.min.js"></script>
+ 
+            <link rel="stylesheet" href="css/bootstrap.min.css">
+            <link rel="stylesheet" href="css/font-awesome.min.css">
+            <link rel="stylesheet" href="css/main.css">
+            <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<meta charset="utf-8" />
-	<meta name="robots" content="noindex, nofollow">
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="http://localhost:8080/images/Game.ico" rel="icon" type="image/x-icon"></link>
-	
 
-<style>
-body
-{background:black no-repeat fixed center; font-family: helvetica;"Segoe UI";Arial,sans-serif;color:green;font-size:14px; line-height: 1.5; margin:0 auto;}
-
-#clientId{background-color:transparent;color:green;border:solid 1px green;height:20px;width:200px}
-#btn{background-color:transparent;color:green;border:solid 1px green}
-#btn2,#btn3,#go_btn{background-color:transparent;color:green;border:solid 1px green}
-#c,#delete,#ce,#e1,#e2{
-	background-color:transparent;color:green;border:solid 1px green;height:25px;width:40px;
-}
-#seven,#eight,#nine,#devide,#percent{
-	background-color:transparent;color:green;border:solid 1px green;height:25px;width:40px;
-}
-#four,#five,#six,#multiply,#recip,#one,#two,#three,#minus,#plus,#dot{
-	background-color:transparent;color:green;border:solid 1px green;height:25px;width:40px;
-}
-#equals{background-color:transparent;color:green;border:solid 1px green;height:70px;width:40px;}
-
-#zero{background-color:transparent;color:green;border:solid 1px green;height:25px;width:95px;}
-
-#calculator{background-color:transparent;color:green;border:solid 2px green;height:340px;width:300px;margin : 0 auto}
-#calendar{background-color:transparent;color:green;border:solid 2px green;height:340px;width:300px;margin : 0 auto}
-
-#input{text-align:right;background-color:transparent;color:green;border:solid 1px green;height:60px;width:256px;padding:10px;}
-.parent{width:340px;height:40px;float:left;margin-right:4px auto}
-.child{float:left;margin-left:4px auto}
-#date,#month,#year,#go_btn{text-align:center;background-color:transparent;color:green;border:solid 1px green;height:40px;width:60px}
-
-</style>
-<script>
-$(document).ready(function(){
-	var arr =["WHITE","SILVER","MAGENTA","BLACK","RED","MAROON","YELLOW","OLIVE","LIME","GREEN","AQUA","TEAL","BLUE","NAVY","FUCHSIA","PURPLE"];
-	var i=0;
-	$("#datadiv").hide();
-	
-	var count=Date.now();
-	count =new Date(count);
-	var weekday = new Array(7);
-	weekday[0] =  "Sunday";
-	weekday[1] = "Monday";
-	weekday[2] = "Tuesday";
-	weekday[3] = "Wednesday";
-	weekday[4] = "Thursday";
-	weekday[5] = "Friday";
-	weekday[6] = "Saturday";
-
-	function incCount(){
-		count =new Date(count);
-		$("#test").html("<h6>"+weekday[count.getDay()]+"&nbsp;|&nbsp;"+count.getDate()+"-"+(count.getMonth()+1)+"-"+count.getFullYear()+"&nbsp;"+count.getHours()+":"+count.getMinutes()+":"+count.getSeconds()+"</h6>");
-		count=Number(count)+Number(1000);
-	}
-	
-	setInterval(incCount,1000);
-	
-$("#btn").click(function(){
-	if(i==16)
-		i=0;
-	$("#mydiv").css("color",arr[i]);
-	$("#mydiv").css("border-color",arr[i]);
-	$("#calculator").css("color",arr[i]);
-	$("#calculator").css("border-color",arr[i]);
-	$("#calendar").css("color",arr[i]);
-	$("#calendar").css("border-color",arr[i]);
-	i++;
-});
-
-var flag=true;
-var off_flag=false;
-var cal_flag=true;
-$('#calculator').hide();
-$("#btn2").click(function(){
-				
-		if(flag==true){
-			$('#calendar').hide();
-			$('#calculator').show();
-			$('#input').val("Powered By jQuery                  ");
-			setTimeout("$('#input').val('0')",2000);
-			
-			
-			cal_flag=true;
-			flag=false;
-		}
-		else{
-			$('#calculator').hide();
-			flag=true;
-		}
-
-});
-
-$('#calendar').hide();
-$("#btn3").click(function(){
-					
-		if(cal_flag==true){
-			$('#calculator').hide();
-			flag=true;
-			$('#calendar').show();			
-			cal_flag=false;
-			$("#result").html("<h5>&emsp;&emsp;&emsp;Powered By jQuery</h5>");
-			setTimeout("$('#result').text('')",2000);
-		}
-		else{
-			$('#calendar').hide();
-			cal_flag=true;
-		}
-
-});
-//$('#').click(function(){});
-
-$('#one').click(function(){
-	if(off_flag==false){
-	
-	if($('#input').val().length==1 && $('#input').val()=="0")
-	$('#input').val("1");
-	else
-	$('#input').val($('#input').val()+"1");
-	}
-});
-$('#two').click(function(){
-	if(off_flag==false){	
-	if($('#input').val().length==1 && $('#input').val()=="0")
-	$('#input').val("2");
-	else
-	$('#input').val($('#input').val()+"2");
-	}
-});
-$('#three').click(function(){
-	
-	if(off_flag==false){
-	if($('#input').val().length==1 && $('#input').val()=="0")
-	$('#input').val("3");
-	else
-	$('#input').val($('#input').val()+"3");
-	}
-});
-$('#four').click(function(){
-	if(off_flag==false){	
-	if($('#input').val().length==1 && $('#input').val()=="0")
-	$('#input').val("4");
-	else
-	$('#input').val($('#input').val()+"4");
-	}
-});
-$('#five').click(function(){
-	if(off_flag==false){
-	if($('#input').val().length==1 && $('#input').val()=="0")
-	$('#input').val("5");
-	else
-	$('#input').val($('#input').val()+"5");
-	}
-});
-$('#six').click(function(){
-	if(off_flag==false){
-	if($('#input').val().length==1 && $('#input').val()=="0")
-	$('#input').val("6");
-	else
-	$('#input').val($('#input').val()+"6");
-	}
-});
-$('#seven').click(function(){
-	if(off_flag==false){
-	if($('#input').val().length==1 && $('#input').val()=="0")
-	$('#input').val("7");
-	else
-	$('#input').val($('#input').val()+"7");
-	}
-});
-$('#eight').click(function(){
-	if(off_flag==false){
-	if($('#input').val().length==1 && $('#input').val()=="0")
-	$('#input').val("8");
-	else
-	$('#input').val($('#input').val()+"8");
-	}
-});
-$('#nine').click(function(){
-	if(off_flag==false){
-	if($('#input').val().length==1 && $('#input').val()=="0")
-	$('#input').val("9");
-	else
-	$('#input').val($('#input').val()+"9");
-	}
-});
-$('#zero').click(function(){
-	if(off_flag==false){
-	if($('#input').val().length==1 && $('#input').val()=="0")
-	$('#input').val("0");
-	else
-	$('#input').val($('#input').val()+"0");
-	}
-});
-$('#dot').click(function(){
-	if(off_flag==false){
-	$('#input').val($('#input').val()+".");}
-});
-$('#delete').click(function(){
-	if(off_flag==false){
-	var input_string=$('#input').val();
-	var len= input_string.length;	
-	if(len==1){
-			$('#input').val("0");
-	}
-	else
-	$('#input').val(input_string.substring(0,len-1));
-	}
-});
-
-$('#plus').click(function(){
-	if(off_flag==false){
-	$('#input').val($('#input').val()+"+");
-	}
-});
-$('#minus').click(function(){
-	if(off_flag==false){
-	$('#input').val($('#input').val()+"-");
-	}
-});
-$('#devide').click(function(){
-	if(off_flag==false){
-	$('#input').val($('#input').val()+"/");
-	}
-});
-$('#multiply').click(function(){
-	if(off_flag==false){
-	$('#input').val($('#input').val()+"*");
-	}
-});
-
-$('#c').click(function(){
-	if(off_flag==false){
-	$('#input').val("0");
-	}
-});
-$('#ce').click(function(){
-	if(off_flag==false){
-	$('#input').val("0");
-	}
-});
-$('#percent').click(function(){
-	if(off_flag==false){
-	$('#input').val($('#input').val()+"%");
-	}
-});
-$('#recip').click(function(){
-	if(off_flag==false){
-	$('#input').val("1/"+$('#input').val());
-	}
-});
-
-$('#equals').click(function(){
-	if(off_flag==false){
-	$('#input').val(eval($('#input').val()));
-	}
-});
-
-$('#e1').click(function(){
-	$('#input').val("");
-	setTimeout("$('#input').val('0')",300);
-	off_flag=false;
-});
-$('#e2').click(function(){
-	$('#input').val("");
-	off_flag=true;
-});
-
-function set_values(){
-	
-	var month=$("#month").val();
-	var year=$('#year').val();
-	var isLeap=false;
-	var oc=false;
-	
-	if(year%400==300 || year%400==200 || year%400==100)
-		oc=true;
-	if(year%4==0 && oc==false)
-		isLeap=true;
-	
-	if(month==1 || month==3 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12)
-		$("#date").attr("max",31);
-	else if(month==4 || month==6 || month==9 || month==11)
-		$("#date").attr("max",30);
-	else if(month==2 && isLeap==true)
-		$("#date").attr("max",29);
-	else
-		$("#date").attr("max",28);
-};
-
-$("#go_btn").attr("disabled",true);	
-$('#year').change(function(){
-	$("#month").attr("disabled",false);	
-	set_values();
-});
-$('#month').change(function(){
-	$("#date").attr("disabled",false);	
-	set_values();
-});
-
-$("#date").change(function(){
-	$("#go_btn").attr("disabled",false);
-});
-$('#go_btn').click(function(){
-
-	var day_arr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-	var month_arr = [31,28,31,30,31,30,31,31,30,31,30,31];
-	var month=$("#month").val();
-	var year=$('#year').val();
-	var date=$('#date').val();
-	var isLeap=false;
-	var oc=false;
-	
-	if(year%400==300 || year%400==200 || year%400==100)
-		oc=true;
-	if(year%4==0 && oc==false)
-		isLeap=true;
-	
-	var year1=(year-1)%400;
-	var odd_days=0;
-	
-	if(year1%400>=300){
-		odd_days=1;
-		year1=year1-300;
-	}
-	else if(year1%400>=200){
-		odd_days=3;
-		year1=year1-200;
-	}
-	else if(year1%400>=100){
-		odd_days=5;
-		year1=year1-100;
-	}
-	
-	var year2=Math.floor(year1/4);
-	
-	odd_days=odd_days+Number((year1-year2)+Number(2*year2));	
-	
-	odd_days=odd_days%7;
-	for(var i=2;i<=month;i++){
-		odd_days=odd_days+month_arr[i-2];
-	}
-	odd_days=odd_days + Number(date);
-	
-	if(isLeap==true && month>2)
-		odd_days=Number(odd_days)+1;
-	odd_days=odd_days%7;
-	
-	$("#result").html("<h5>&emsp;Seems like "+day_arr[odd_days]+"!!</h5>");	
-});
-});
-
-</script>
-
+            <!-- heap analytics -->
+            <script type="text/javascript">
+                window.heap = window.heap || [], heap.load = function (e, t) {
+                    window.heap.appid = e, window.heap.config = t = t || {};
+                    var r = t.forceSSL || "https:" === document.location.protocol,
+                        a = document.createElement("script");
+                    a.type = "text/javascript", a.async = !0, a.src = (r ? "https:" : "http:") + "//cdn.heapanalytics.com/js/heap-" + e + ".js";
+                    var n = document.getElementsByTagName("script")[0];
+                    n.parentNode.insertBefore(a, n);
+                    for (var o = function (e) {
+                        return function () {
+                            heap.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+                        }
+                    }, p = ["addEventProperties", "addUserProperties", "clearEventProperties", "identify", "removeEventProperty", "setEventProperties", "track", "unsetEventProperty"], c = 0; c < p.length; c++) heap[p[c]] = o(p[c])
+                };
+                heap.load("3800196545");
+            </script>
 </head>
+
 <body>
-<div id = "mydiv" align="center">
-	<h4>☺☺☺☺ Welcome to TESTAPP ☺☺☺☺</h4><br><br>
-	
-	<span id="test"></span><br>
-	<input type="button" value="ChangeColor" id="btn"> &nbsp;&nbsp;
-	
-	<input type="button" value="Calendar" id="btn3">&nbsp;&nbsp;
-	<input type="button" value="Calculator" id="btn2">
-	
-</div>
-<div id="datadiv" align="center">
-</div>
-<br>
-<div id="calculator" align="center"><br>
-<input type="text" id="input" name="input" disabled><br><br>
-<div>
-<input type="button" id="delete" value="←">&emsp;<input type="button" id="ce" value="CE">&emsp;<input type="button" id="c" value="C">&emsp;<input type="button" id="e1" value="ON">&emsp;<input type="button" id="e2" value="OFF">
-</div><br>
-<div>
-<input type="button" id="seven" value="7">&emsp;<input type="button" id="eight" value="8">&emsp;<input type="button" id="nine" value="9">&emsp;<input type="button" id="devide" value="/">&emsp;<input type="button" id="percent" value="%">
-</div><br>
-<div>
-<input type="button" id="four" value="4">&emsp;<input type="button" id="five" value="5">&emsp;<input type="button" id="six" value="6">&emsp;<input type="button" id="multiply" value="*">&emsp;<input type="button" id="recip" value="1/x">
-</div><br>
-<div class="parent" align="center">
-<div class="child">
-&emsp;&nbsp;&nbsp;<input type="button" id="one" value="1">&emsp;<input type="button" id="two" value="2">&emsp;<input type="button" id="three" value="3">&emsp;<input type="button" id="minus" value="-">&nbsp;&nbsp;&nbsp;
-<br><br>
-&emsp;&nbsp;<input type="button" id="zero" value="0">&emsp;<input type="button" id="dot" value=".">&emsp;<input type="button" id="plus" value="+">&nbsp;&nbsp;&nbsp;
-</div>
-<div class="child">
-<input type="button" id="equals" value="=">
-</div>
-</div><br>
-</div>
+    <!-- START PRELOADER -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- END PRELOADER -->
+    <!-- Return to Top -->
+    <a href="javascript:" id="return-to-top">
+        <span class="fa fa-arrow-up" aria-hidden="true"></span>
+    </a>
+    <!-- navigation -->
+    <!-- start Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for mobile display -->
+            <div class="navbar-header">
+                <!-- <a class="navbar-brand" href="#about">
+                    <img alt="Harsh Agrawal" class="navbar-brand" src="img/marina_marques_logo.png">
+                </a> -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ResponsiveNav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right" id="ResponsiveNav">
+                <ul class="nav navbar-nav">
+                    <li><a href="#about-me" class="page-scroll">ABOUT</a></li>
+                    <li><a href="#portfolio" class="page-scroll">PORTFOLIO</a></li>
+                    <li><a href="#services" class="page-scroll">SKILLS</a></li>
+                    <li><a href="#contact" class="page-scroll">CONTACT</a></li>
+                </ul>
+            </div>
+            <!-- end collapse -->
+        </div>
+        <!-- end container fluid -->
+    </nav>
 
-<div id="calendar">
-	<br>
-	<div id="in_con" class="parent">
-	<br>
-	<div id="date_con" class="child">&emsp;<input type="number" id="date" name="date" min=1 max=1 placeholder="Date" disabled="true"></div>
-	<div id="month_con" class="child">&nbsp;&nbsp;<input type="number" id="month" name="month" min=1 max=12 placeholder="Month" disabled="true"></div>
-	<div id="year_con" class="child">&nbsp;&nbsp;<input type="number" id="year" name="year" min=1 placeholder="Year"></div>
-	<div id="go_con" class="child">&nbsp;&nbsp;<input type="button" id="go_btn" name="go_btn" value="Go"></div>
-	</div>
-	<br><br><br><br>
-	<span id="result"></span>
-	
-</div>
+    <!-- end navigation -->
+    <!-- intro header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <!-- start typer hello  -->
+                        <div class="brand-heading">
+                            <span class="txt-rotate" data-period="80" data-rotate='[ "Hello,", "Hi..,", "aloha,", "Salut," , "muscles,"]'></span>
+                        </div>
+                        <!-- end typer hello -->
+                        <p class="intro-text">My Name is .. Abhishek Mhaiskar.
+                            <br> I'm a
+                            <span class="fa fa-code" aria-hidden="true"></span>
+                            <span class="intro-text-hgl"> Full Stack Developer</span>
+                            <span class="fa fa-code" aria-hidden="true"></span>
+                            <!-- <br>based in the beautiful city of <span class="city">Lisbon</span>, Portugal.</p> -->
+                            <!-- start mouse wrap -->
+                            <div class="mouse-warp">
+                                <a href="#mouse-here" class="page-scroll">
+                                    <div class="mouse">
+                                        <div class="scroll"></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- end mouse wrap -->
+                    </div>
+                    <!-- end column wrapping -->
+                </div>
+                <!-- end row header -->
+            </div>
+            <!-- end container header -->
+        </div>
+        <!-- end intro body -->
+    </header>
+    <!-- end intro header -->
+    <div id="mouse-here"></div>
+    <!-- only for mouse to fall before the start of the section -->
+    <!-- start about me -->
+    <section id="about-me">
+        <div class="container">
+            <div class="row">
+                <h2>ABOUT</h2>
+                <div class="col-lg-6 about-intro">
+                    <div class="about-inner">
+                        <div class="about-ct">
+                            <img src="img/spacer1.jpg" alt="Abhishek Mhaiskar" class="img-responsive">
+                            <div class="textbox-about hidden-sm">
+                                <div class="btn button-social">
+                                    <a href="https://www.facebook.com/Abhishek_Mhaiskar" target="_blank" alt="Facebook profile">
+                                        <span class="fa fa-facebook" aria-hidden="true"></span>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/abhishek-mhaiskar/" alt="LinkedIn profile" target="_blank">
+                                        <span class="fa fa-linkedin" aria-hidden="true"></span>
+                                    </a>
+                                    <a href="https://github.com/abhishekM30" target="_blank" alt="GitHub profile">
+                                        <span class="fa fa-github" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 about-intro-text">
+                    <p>I'm a
+                        <span>Full Stack developer</span> (fancy name to say that can i develop front end and backend portions
+                        of websites and applications).
+                        <br> Technology has always fascinated me and I try my best to Implement my knowledge into practical
+                        life and solve the problems before me. I have strong desire and willingness to learn new things and
+                        technologies. It's just like lego. You start piece by piece, nobody understands what you're building
+                        and tada... you have a castle.
+                        <br> Here's to building castles with code!
+                        <span class="fa fa-beer" aria-hidden="true"></span>
+                    </p>
+                    <div class="button-group">
+                        <div class="text">Download CV</div>
+                        <div class="icon-cv">
+                            <a href="assets/Abhishek_Mhaiskar.pdf" alt="Harsh Agrawal CV" target="_blank">
+                                <span class="fa fa-arrow-circle-down" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row about -->
+        </div>
+        <!-- end container about -->
+        <!-- start count stats -->
+        <!--
+		<section id="counter-stats">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 stats">
+                        <span class="fa fa-code" aria-hidden="true"></span>
+                        <div class="counter" data-count="900000">0</div>
+                        <h5>Lines of code</h5>
+                    </div>
+                    <div class="col-lg-4 stats">
+                        <span class="fa fa-check" aria-hidden="true"></span>
+                        <div class="counter" data-count="7">0</div>
+                        <h5>Projects done</h5>
+                    </div>
+                    
+                    <div class="col-lg-4 stats">
+                        <span class="fa fa-coffee" aria-hidden="true"></span>
+                        <div class="counter" data-count="999">0</div>
+                        <h5>Cups of coffee</h5>
+                    </div>
+                </div>
+                <!-- end row counter stats -->
+        <!-- </div>
+            <!-- end container counter stats -->
+        <!--  </section> -->
+        <!-- end cont stats -->
+    </section>
+    <!-- end about me -->
+    <!-- start work experience -->
+    <section id="experience">
+        <div class="container">
+            <h2>EXPERIENCE</h2>
+            <div class="experience-ct">
+                <div class="row">
+                    <div class="col-md-6 timeline-label">
+                        <h4>key areas</h4>
+                        <p>full stack development, front end development, Java application development and database management.</p>
+                        <a href="https://www.linkedin.com/in/abhishek-mhaiskar/" alt="LinkedIn profile" target="_blank">
+                            <div class="button-group-li">
+                                <div class="text-timeline">View on LinkedIn</div>
+                                <div class="icon-li">
+                                    <span class="fa fa-linkedin" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 timeline col-exp">
+                        <div class="timeline-year">
+                            <time datetime="2016">2018</time>
+                            <div class="timeline-experience">
+                                <span class="timeline-circle"></span>
+                                <div class="timeline-experience-img">
+                                    <img src="img/cognizant.png" alt="Cognizant">
+                                </div>
+                                <div class="timeline-experience-info clear-after">
+                                    <h5>Cognizant Technology Solutions</h5>
+                                    <div class="timeline-role">Program Analyst {Full Stack Developer} </div>
+                                    <p>Feb 3,2018 - Present</p>
+                                </div>
+                                <!-- experience-info -->
+                            </div>
 
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end row of two columns -->
+            </div>
+            <!-- end experience container of two columns -->
+        </div>
+        <br>
+
+        <div class=" container col-md-12">
+
+            <h3 class="heading"></h3>
+            <div class="grid1 wow bounceInUp data-wow-delay=4s">
+                <h3> Grizzly Store ( E Commerce website)</h3>
+                <p> I worked on this project during my training as full stack developer (Immersive Learning Batch) at Cognizant.
+                    It implements an E-commerce website which was divided into three portals Admin, Vendor and Customer.
+                    21 Associates worked on this project who were divided into each respective Portal. I was part of vendor
+                    portal and my task was to display detailed product information along with images - on click from product
+                    list, Edit product Information and delete Images. We implemented this project using GIT and Maven. We
+                    deployed this project on cognizant server using putty and WinScp3 tools. This Application allows User
+                    to login, search, view products with details and images in carousel, add them to cart, manage orders
+                    and track orders placed by them. </p>
+            </div>
+        </div>
+
+        <div class=" container col-md-12">
+
+            <h3 class="heading"></h3>
+            <div class="grid1 wow bounceInUp data-wow-delay=4s">
+                <h3> Compe10cy ( Early Engagement Platform)</h3>
+                <p>This was the already live project which needed some functionality patches to be added. It was the platform
+                    for cognizant aspirants from colleges all across the India to engage with cognizant organization through
+                    learning events like TPL and various technology tracks. In compe10cy portal I was responsible for creating
+                    portal for admin to publish event, start registration for event, freeze Registration booking and configure
+                    year specific users for event. Apart from compe10cy-admin portal I worked on tpl portal which was created
+                    for redirecting admin configured users to e-box learning platform. Ant tool was used for building this
+                    project. For deployment of this project on server Jenkins was used. Using this Application user was able
+                    to Login, Register for the event , book desired slot from the available slots if user is allowed to book
+                    a slot by admin, see time remaining for the event after login , Register for the TPL season , view learning
+                    progress, Provide and update personal or qualification Details etc.
+                </p>
+            </div>
+        </div>
+
+        <div class=" container col-md-12">
+
+            <h3 class="heading"></h3>
+            <div class="grid1 wow bounceInUp data-wow-delay=4s">
+                <h3> CKLUB ( Cognizant Club)</h3>
+                <p> CKlub is an exclusive hub to bring together Cognizant's Subject Matter Experts. CKlub aims to benefit the
+                    SME's by streamlining the process of volunteering for a session and providing an oppurtunity to gain
+                    some much deserved rewards! The C-Klub project is currently in the development stage. The idea behind
+                    this project is utilization of Cognizant internal resources instead of external trainers for fresher
+                    or BU training program. It will help cognizant academy team to save expenditures cost on external vendors.
+                    Cognizant Employees who are willing to guide others will register on the portal, mention their specialized
+                    technology and time availability. Thus Academy or BU team can arrange sessions for the required technology.
+                    User is able to see event notifications, Past events along with images, Login in to CKlub portal, Register
+                    for the Event, view Event Description, Feed Back After the Event etc.
+
+                </p>
+            </div>
+        </div>
+
+        <!-- AMI PTS new project insertion -->
+        <div class=" container col-md-12">
+
+            <h3 class="heading"></h3>
+            <div class="grid1 wow bounceInUp data-wow-delay=4s">
+                <h3> FPL AMI PTS ( Product Tracking System ) )</h3>
+                <p>AMI PTS is the product Tracking system which deals with the smart assets such as meter, Relay, Smart Node,
+                    Battery Backup unit and Access Point. This project mainly contains many tasks and schedulers which interact
+                    with the device health their readings and status along with the location. Users get notified about these
+                    devices from time to time. I have worked on condition monitoring module Enhancements, which checks the
+                    health of these devise daily and triggers the mail about the reading to user on rolling interval entered
+                    by user along with the excel sheet of devices with their id and on which condition they are failed
+
+
+                </p>
+            </div>
+        </div>
+        <!-- AMI PTS new project insertion -->
+
+
+        <!-- end container experience -->
+    </section>
+    <br>
+    <br>
+    <!-- end work experience -->
+    <!-- start work portfolio -->
+
+    <section id="portfolio">
+        <div class="container-fluid portfolio-ct">
+            <br>
+            <h2>education</h2>
+            <!-- end row portfolio -->
+        </div>
+        <!-- end container portfolio -->
+    </section>
+    <div class="education" id="education" style="background-color:#f1f1f1;">
+        <br>
+        <br>
+        <div class="container">
+            <div class="col-md-4">
+                <div class="grid1 wow bounceInDown data-wow-delay=1s">
+                    <h3>B.Tech, E&TC</h3>
+                    <p>Pune University</p>
+                    <p>76.40% (HONOURS)</p>
+                    <h4><b>Year</b> : 2013-2017</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="grid1 wow bounceInDown data-wow-delay=2s">
+                    <h3> 12th HSC</h3>
+                    <p>Sir Parashurambhau College (S.P.),Pune </p>
+                    <p>67%</p>
+                    <h4><b>Year</b> : 2012-2013</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="grid1 wow bounceInDown data-wow-delay=3s">
+                    <h3> 10th SSC</h3>
+                    <p>Jawahar Vidyalya</p>
+                    <p>94.55 %</p>
+                    <h4><b>Year</b> : 2010-2011</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+    <!-- end work portfolio -->
+    <!-- start services -->
+    <section id="services">
+        <div class="container">
+            <h2>SKILLS : </h2>
+            <div class="row">
+                <div class="ct-services">
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <span class=" techicon devicon-html5-plain-wordmark colored" aria-hidden="true"></span>
+                            <!-- <i class="fa fa-file-code-o fa-wrapper" aria-hidden="true"></i> -->
+                        </div>
+                        <h3>HTML5</h3>
+
+                    </div>
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <!-- <span class="fa fa-wordpress fa-wrapper" aria-hidden="true"></span> -->
+                            <span class="  techicon  devicon-css3-plain-wordmark " aria-hidden="true"></span>
+                        </div>
+                        <h3>CSS3</h3>
+                    </div>
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <span class="techicon devicon-bootstrap-plain-wordmark colored" aria-hidden="true"></span>
+                            <!-- <i class="fa fa-search fa-wrapper" aria-hidden="true"></i>-->
+                        </div>
+                        <h3>Bootstrap</h3>
+                    </div>
+
+
+
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <span class=" techicon fab fa-angular" aria-hidden="true"></span>
+                            <!-- <i class="fa fa-file-code-o fa-wrapper" aria-hidden="true"></i> -->
+                        </div>
+                        <h3>Angular 5</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="ct-services">
+
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <!-- <span class="fa fa-wordpress fa-wrapper" aria-hidden="true"></span> -->
+                            <span class="  techicon  devicon-javascript-plain colored " aria-hidden="true"></span>
+                        </div>
+                        <h3>JavaScript</h3>
+                    </div>
+
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <!-- <span class="fa fa-wordpress fa-wrapper" aria-hidden="true"></span> -->
+                            <span class="  techicon devicon-git-plain " aria-hidden="true"></span>
+                        </div>
+                        <h3>Github</h3>
+                    </div>
+
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <span class="techicon  devicon-java-plain-wordmark" aria-hidden="true"></span>
+                            <!-- <i class="fa fa-search fa-wrapper" aria-hidden="true"></i>-->
+                        </div>
+                        <h3>Java</h3>
+
+                    </div>
+
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <span class="techicon fas fa-database" aria-hidden="true"></span>
+                            <!-- <i class="fa fa-search fa-wrapper" aria-hidden="true"></i>-->
+                        </div>
+                        <h3>MySQL</h3>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end row of services -->
+            <div class="row">
+                <div class="ct-services">
+
+
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <span class=" techicon fas fa-bars" aria-hidden="true"></span>
+                            <!-- <i class="fa fa-file-code-o fa-wrapper" aria-hidden="true"></i> -->
+                        </div>
+                        <h3>Spring FrameWork</h3>
+                    </div>
+
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <span class=" techicon devicon-cplusplus-line colored " aria-hidden="true"></span>
+                            <!-- <i class="fa fa-file-code-o fa-wrapper" aria-hidden="true"></i> -->
+                        </div>
+                        <h3>C & C++</h3>
+                    </div>
+
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <span class=" techicon devicon-jquery-plain-wordmark " aria-hidden="true"></span>
+                            <!-- <i class="fa fa-file-code-o fa-wrapper" aria-hidden="true"></i> -->
+                        </div>
+                        <h3>Jquery</h3>
+                    </div>
+
+                    <div class="col-md-3 services-item">
+                        <div class="rotate">
+                            <span class=" techicon techicon fas fa-bars" aria-hidden="true"></span>
+                            <!-- <i class="fa fa-file-code-o fa-wrapper" aria-hidden="true"></i> -->
+                        </div>
+                        <h3>Agile Scrum</h3>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+            <!-- end row services section   -->
+        </div>
+        <!-- end div services section -->
+    </section>
+    <!-- end services -->
+
+    <section id="spacer1" class="home-section spacer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="color-light">
+                        <h2 class="wow bounceInDown" data-wow-delay="1s">Presently working at Cognizant as Full Stack Developer. So more skills to be acquired.</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- start footer -->
+
+
+
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <h2>CONTACT</h2>
+                <div class="fa fa-envelope-o fa-2x">
+                    <a style=" font-size:20px" href="mailto:abhishekmhaiskar@gmail.com">abhishekmhaiskar@gmail.com</a>
+                </div>
+
+                <div class="fa fa-phone fa-2x" aria-hidden="true">
+
+                    <a style=" font-size:20px" href="#">+919860623750</a>
+                </div>
+
+                <div class="fa fa-map-marker fa-2x" aria-hidden="true">
+                    <a style=" font-size:20px" href="#">Quadron Business Park, Hinjewadi Phase 2, Pune</a>
+
+                </div>
+                <br>
+                <div class="social">
+                    <a href="https://www.facebook.com/AbhishekMhaiskar/" target="_blank" alt="Facebook profile">
+                        <span class="fa fa-facebook" aria-hidden="true"></span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhishek-mhaiskar/" target="_blank" alt="LinkedIn profile">
+                        <span class="fa fa-linkedin" aria-hidden="true"></span>
+                        </i>
+                    </a>
+                    <a href="https://github.com" target="_blank" alt="GitHub profile">
+                        <span class="fa fa-github" aria-hidden="true"></span>
+                    </a>
+                    <a href="https://www.instagram.com/abhishekm30" target="_blank" alt="Instagram profile">
+                        <span class="fa fa-instagram" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- <p id="copyright"></p> -->
+
+            </div>
+            <!-- end row contact -->
+        </div>
+        <!-- end container footer section -->
+    </footer>
+    <!-- end footer -->
+
+    <!-- end cookie disclaimer -->
+    <!-- scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <!-- my JS -->
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Preloader -->
+    <script type="text/javascript">
+                jQuery.noConflict();
+                (function ($) {
+                    $(window).on('load', function () { // makes sure the whole site is loaded
+                        $('#status').fadeOut(); // will first fade out the loading animation
+                        $('#preloader').delay(200).fadeOut('slow'); // will fade out the white DIV that covers the website.
+                    });
+                })(jQuery);
+    </script>
+    <!-- end Preloader -->
+    <!-- hello typer start -->
+    <script type="text/javascript">
+                window.onload = function () {
+                    var elements = document.getElementsByClassName('txt-rotate');
+                    for (var i = 0; i < elements.length; i++) {
+                        var toRotate = elements[i].getAttribute('data-rotate');
+                        var period = elements[i].getAttribute('data-period');
+                        if (toRotate) {
+                            new TxtRotate(elements[i], JSON.parse(toRotate), period);
+                        }
+                    }
+                    // INJECT CSS
+                    var css = document.createElement("style");
+                    css.type = "text/css";
+                    css.innerHTML = ".txt-rotate > .wrap { border-right: 10px solid #40E0D0 }";
+                    document.body.appendChild(css);
+                };
+    </script>
+    <!-- hello typer end -->
+    <!-- google analytics start -->
+    <script>
+        (function (b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l;
+            b[l] || (b[l] =
+                function () {
+                    (b[l].q = b[l].q || []).push(arguments)
+                });
+            b[l].l = +new Date;
+            e = o.createElement(i);
+            r = o.getElementsByTagName(i)[0];
+            e.src = 'https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        } (window, document, 'script', 'ga'));
+        ga('create', 'UA-62476454-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- google analytics end  -->
 </body>
+
 </html>
