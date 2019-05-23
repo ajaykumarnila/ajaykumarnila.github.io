@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Home
+</title>
+
+	<meta charset="utf-8" />
+	<meta name="robots" content="noindex, nofollow">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="http://localhost:8080/images/Game.ico" rel="icon" type="image/x-icon"></link>
+	
+
+<style>
+body
+{background:black no-repeat fixed center; font-family: helvetica;"Segoe UI";Arial,sans-serif;color:green;font-size:14px; line-height: 1.5; margin:0 auto;}
+
+#clientId{background-color:transparent;color:green;border:solid 1px green;height:20px;width:200px}
+#btn{background-color:transparent;color:green;border:solid 1px green}
+#btn2,#btn3,#go_btn{background-color:transparent;color:green;border:solid 1px green}
+#c,#delete,#ce,#e1,#e2{
+	background-color:transparent;color:green;border:solid 1px green;height:25px;width:40px;
+}
+#seven,#eight,#nine,#devide,#percent{
+	background-color:transparent;color:green;border:solid 1px green;height:25px;width:40px;
+}
+#four,#five,#six,#multiply,#recip,#one,#two,#three,#minus,#plus,#dot{
+	background-color:transparent;color:green;border:solid 1px green;height:25px;width:40px;
+}
+#equals{background-color:transparent;color:green;border:solid 1px green;height:70px;width:40px;}
+
+#zero{background-color:transparent;color:green;border:solid 1px green;height:25px;width:95px;}
+
+#calculator{background-color:transparent;color:green;border:solid 2px green;height:340px;width:300px;margin : 0 auto}
+#calendar{background-color:transparent;color:green;border:solid 2px green;height:340px;width:300px;margin : 0 auto}
+
+#input{text-align:right;background-color:transparent;color:green;border:solid 1px green;height:60px;width:256px;padding:10px;}
+.parent{width:340px;height:40px;float:left;margin-right:4px auto}
+.child{float:left;margin-left:4px auto}
+#date,#month,#year,#go_btn{text-align:center;background-color:transparent;color:green;border:solid 1px green;height:40px;width:60px}
+
+</style>
+<script>
+$(document).ready(function(){
+	var arr =["WHITE","SILVER","MAGENTA","BLACK","RED","MAROON","YELLOW","OLIVE","LIME","GREEN","AQUA","TEAL","BLUE","NAVY","FUCHSIA","PURPLE"];
+	var i=0;
+	$("#datadiv").hide();
+	
+	var count=Date.now();
+	count =new Date(count);
+	var weekday = new Array(7);
+	weekday[0] =  "Sunday";
+	weekday[1] = "Monday";
+	weekday[2] = "Tuesday";
+	weekday[3] = "Wednesday";
+	weekday[4] = "Thursday";
+	weekday[5] = "Friday";
+	weekday[6] = "Saturday";
+
+	function incCount(){
+		count =new Date(count);
+		$("#test").html("<h6>"+weekday[count.getDay()]+"&nbsp;|&nbsp;"+count.getDate()+"-"+(count.getMonth()+1)+"-"+count.getFullYear()+"&nbsp;"+count.getHours()+":"+count.getMinutes()+":"+count.getSeconds()+"</h6>");
+		count=Number(count)+Number(1000);
+	}
+	
+	setInterval(incCount,1000);
+	
+$("#btn").click(function(){
+	if(i==16)
+		i=0;
+	$("#mydiv").css("color",arr[i]);
+	$("#mydiv").css("border-color",arr[i]);
+	$("#calculator").css("color",arr[i]);
+	$("#calculator").css("border-color",arr[i]);
+	$("#calendar").css("color",arr[i]);
+	$("#calendar").css("border-color",arr[i]);
+	i++;
+});
+
+var flag=true;
+var off_flag=false;
+var cal_flag=true;
+$('#calculator').hide();
+$("#btn2").click(function(){
+				
+		if(flag==true){
+			$('#calendar').hide();
+			$('#calculator').show();
+			$('#input').val("Powered By jQuery                  ");
+			setTimeout("$('#input').val('0')",2000);
+			
+			
+			cal_flag=true;
+			flag=false;
+		}
+		else{
+			$('#calculator').hide();
+			flag=true;
+		}
+
+});
+
+$('#calendar').hide();
+$("#btn3").click(function(){
+					
+		if(cal_flag==true){
+			$('#calculator').hide();
+			flag=true;
+			$('#calendar').show();			
+			cal_flag=false;
+			$("#result").html("<h5>&emsp;&emsp;&emsp;Powered By jQuery</h5>");
+			setTimeout("$('#result').text('')",2000);
+		}
+		else{
+			$('#calendar').hide();
+			cal_flag=true;
+		}
+
+});
+//$('#').click(function(){});
+
+$('#one').click(function(){
+	if(off_flag==false){
+	
+	if($('#input').val().length==1 && $('#input').val()=="0")
+	$('#input').val("1");
+	else
+	$('#input').val($('#input').val()+"1");
+	}
+});
+$('#two').click(function(){
+	if(off_flag==false){	
+	if($('#input').val().length==1 && $('#input').val()=="0")
+	$('#input').val("2");
+	else
+	$('#input').val($('#input').val()+"2");
+	}
+});
+$('#three').click(function(){
+	
+	if(off_flag==false){
+	if($('#input').val().length==1 && $('#input').val()=="0")
+	$('#input').val("3");
+	else
+	$('#input').val($('#input').val()+"3");
+	}
+});
+$('#four').click(function(){
+	if(off_flag==false){	
+	if($('#input').val().length==1 && $('#input').val()=="0")
+	$('#input').val("4");
+	else
+	$('#input').val($('#input').val()+"4");
+	}
+});
+$('#five').click(function(){
+	if(off_flag==false){
+	if($('#input').val().length==1 && $('#input').val()=="0")
+	$('#input').val("5");
+	else
+	$('#input').val($('#input').val()+"5");
+	}
+});
+$('#six').click(function(){
+	if(off_flag==false){
+	if($('#input').val().length==1 && $('#input').val()=="0")
+	$('#input').val("6");
+	else
+	$('#input').val($('#input').val()+"6");
+	}
+});
+$('#seven').click(function(){
+	if(off_flag==false){
+	if($('#input').val().length==1 && $('#input').val()=="0")
+	$('#input').val("7");
+	else
+	$('#input').val($('#input').val()+"7");
+	}
+});
+$('#eight').click(function(){
+	if(off_flag==false){
+	if($('#input').val().length==1 && $('#input').val()=="0")
+	$('#input').val("8");
+	else
+	$('#input').val($('#input').val()+"8");
+	}
+});
+$('#nine').click(function(){
+	if(off_flag==false){
+	if($('#input').val().length==1 && $('#input').val()=="0")
+	$('#input').val("9");
+	else
+	$('#input').val($('#input').val()+"9");
+	}
+});
+$('#zero').click(function(){
+	if(off_flag==false){
+	if($('#input').val().length==1 && $('#input').val()=="0")
+	$('#input').val("0");
+	else
+	$('#input').val($('#input').val()+"0");
+	}
+});
+$('#dot').click(function(){
+	if(off_flag==false){
+	$('#input').val($('#input').val()+".");}
+});
+$('#delete').click(function(){
+	if(off_flag==false){
+	var input_string=$('#input').val();
+	var len= input_string.length;	
+	if(len==1){
+			$('#input').val("0");
+	}
+	else
+	$('#input').val(input_string.substring(0,len-1));
+	}
+});
+
+$('#plus').click(function(){
+	if(off_flag==false){
+	$('#input').val($('#input').val()+"+");
+	}
+});
+$('#minus').click(function(){
+	if(off_flag==false){
+	$('#input').val($('#input').val()+"-");
+	}
+});
+$('#devide').click(function(){
+	if(off_flag==false){
+	$('#input').val($('#input').val()+"/");
+	}
+});
+$('#multiply').click(function(){
+	if(off_flag==false){
+	$('#input').val($('#input').val()+"*");
+	}
+});
+
+$('#c').click(function(){
+	if(off_flag==false){
+	$('#input').val("0");
+	}
+});
+$('#ce').click(function(){
+	if(off_flag==false){
+	$('#input').val("0");
+	}
+});
+$('#percent').click(function(){
+	if(off_flag==false){
+	$('#input').val($('#input').val()+"%");
+	}
+});
+$('#recip').click(function(){
+	if(off_flag==false){
+	$('#input').val("1/"+$('#input').val());
+	}
+});
+
+$('#equals').click(function(){
+	if(off_flag==false){
+	$('#input').val(eval($('#input').val()));
+	}
+});
+
+$('#e1').click(function(){
+	$('#input').val("");
+	setTimeout("$('#input').val('0')",300);
+	off_flag=false;
+});
+$('#e2').click(function(){
+	$('#input').val("");
+	off_flag=true;
+});
+
+function set_values(){
+	
+	var month=$("#month").val();
+	var year=$('#year').val();
+	var isLeap=false;
+	var oc=false;
+	
+	if(year%400==300 || year%400==200 || year%400==100)
+		oc=true;
+	if(year%4==0 && oc==false)
+		isLeap=true;
+	
+	if(month==1 || month==3 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12)
+		$("#date").attr("max",31);
+	else if(month==4 || month==6 || month==9 || month==11)
+		$("#date").attr("max",30);
+	else if(month==2 && isLeap==true)
+		$("#date").attr("max",29);
+	else
+		$("#date").attr("max",28);
+};
+
+$("#go_btn").attr("disabled",true);	
+$('#year').change(function(){
+	$("#month").attr("disabled",false);	
+	set_values();
+});
+$('#month').change(function(){
+	$("#date").attr("disabled",false);	
+	set_values();
+});
+
+$("#date").change(function(){
+	$("#go_btn").attr("disabled",false);
+});
+$('#go_btn').click(function(){
+
+	var day_arr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+	var month_arr = [31,28,31,30,31,30,31,31,30,31,30,31];
+	var month=$("#month").val();
+	var year=$('#year').val();
+	var date=$('#date').val();
+	var isLeap=false;
+	var oc=false;
+	
+	if(year%400==300 || year%400==200 || year%400==100)
+		oc=true;
+	if(year%4==0 && oc==false)
+		isLeap=true;
+	
+	var year1=(year-1)%400;
+	var odd_days=0;
+	
+	if(year1%400>=300){
+		odd_days=1;
+		year1=year1-300;
+	}
+	else if(year1%400>=200){
+		odd_days=3;
+		year1=year1-200;
+	}
+	else if(year1%400>=100){
+		odd_days=5;
+		year1=year1-100;
+	}
+	
+	var year2=Math.floor(year1/4);
+	
+	odd_days=odd_days+Number((year1-year2)+Number(2*year2));	
+	
+	odd_days=odd_days%7;
+	for(var i=2;i<=month;i++){
+		odd_days=odd_days+month_arr[i-2];
+	}
+	odd_days=odd_days + Number(date);
+	
+	if(isLeap==true && month>2)
+		odd_days=Number(odd_days)+1;
+	odd_days=odd_days%7;
+	
+	$("#result").html("<h5>&emsp;Seems like "+day_arr[odd_days]+"!!</h5>");	
+});
+});
+
+</script>
+
+</head>
+<body>
+<div id = "mydiv" align="center">
+	<h4>☺☺☺☺ Welcome to TESTAPP ☺☺☺☺</h4><br><br>
+	
+	<span id="test"></span><br>
+	<input type="button" value="ChangeColor" id="btn"> &nbsp;&nbsp;
+	
+	<input type="button" value="Calendar" id="btn3">&nbsp;&nbsp;
+	<input type="button" value="Calculator" id="btn2">
+	
+</div>
+<div id="datadiv" align="center">
+</div>
+<br>
+<div id="calculator" align="center"><br>
+<input type="text" id="input" name="input" disabled><br><br>
+<div>
+<input type="button" id="delete" value="←">&emsp;<input type="button" id="ce" value="CE">&emsp;<input type="button" id="c" value="C">&emsp;<input type="button" id="e1" value="ON">&emsp;<input type="button" id="e2" value="OFF">
+</div><br>
+<div>
+<input type="button" id="seven" value="7">&emsp;<input type="button" id="eight" value="8">&emsp;<input type="button" id="nine" value="9">&emsp;<input type="button" id="devide" value="/">&emsp;<input type="button" id="percent" value="%">
+</div><br>
+<div>
+<input type="button" id="four" value="4">&emsp;<input type="button" id="five" value="5">&emsp;<input type="button" id="six" value="6">&emsp;<input type="button" id="multiply" value="*">&emsp;<input type="button" id="recip" value="1/x">
+</div><br>
+<div class="parent" align="center">
+<div class="child">
+&emsp;&nbsp;&nbsp;<input type="button" id="one" value="1">&emsp;<input type="button" id="two" value="2">&emsp;<input type="button" id="three" value="3">&emsp;<input type="button" id="minus" value="-">&nbsp;&nbsp;&nbsp;
+<br><br>
+&emsp;&nbsp;<input type="button" id="zero" value="0">&emsp;<input type="button" id="dot" value=".">&emsp;<input type="button" id="plus" value="+">&nbsp;&nbsp;&nbsp;
+</div>
+<div class="child">
+<input type="button" id="equals" value="=">
+</div>
+</div><br>
+</div>
+
+<div id="calendar">
+	<br>
+	<div id="in_con" class="parent">
+	<br>
+	<div id="date_con" class="child">&emsp;<input type="number" id="date" name="date" min=1 max=1 placeholder="Date" disabled="true"></div>
+	<div id="month_con" class="child">&nbsp;&nbsp;<input type="number" id="month" name="month" min=1 max=12 placeholder="Month" disabled="true"></div>
+	<div id="year_con" class="child">&nbsp;&nbsp;<input type="number" id="year" name="year" min=1 placeholder="Year"></div>
+	<div id="go_con" class="child">&nbsp;&nbsp;<input type="button" id="go_btn" name="go_btn" value="Go"></div>
+	</div>
+	<br><br><br><br>
+	<span id="result"></span>
+	
+</div>
+
+</body>
+</html>
